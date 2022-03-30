@@ -1,4 +1,3 @@
-import './App.css';
 import Player from './player';
 
 function App() {

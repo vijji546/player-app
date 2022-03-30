@@ -20,13 +20,13 @@ const baseURL = "http://localhost:8080/api/players";
 function Player() {
 
 const [players, setPlayers] = useState(null);
-const [error, setError] = React.useState({displayError:false});
+const [error, setError] = useState(false);
 
 React.useEffect(() => {
                 axios.get(baseURL).then((response) => {
                   setPlayers(response.data);
                 }).catch(error => {
-                        setError({displayError:true});
+                        setError(true);
                       });
               }, []);
 const classes = useStyles();
@@ -70,8 +70,8 @@ return (
                   ))}
                 </Grid>
               </Container> }
-              { error.displayError ?
-                              <Alert severity="error">Something went wrong, Please try again later</Alert>: null}
+              { error ?
+                  <Alert severity="error">Something went wrong, Please try again later</Alert>: null}
             </div>
           );
 }
